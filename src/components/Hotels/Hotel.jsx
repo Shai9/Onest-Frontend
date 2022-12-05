@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Hotel = () => {
-  return (
-    <h1>This is the single dedicated hotel page</h1>
+  return(
+    <h1>Hello from a single page hotel</h1>
   )
 }
 
