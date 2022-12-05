@@ -1,7 +1,31 @@
 import {React, useState, useEffect} from 'react'
 import axios from 'axios'
 import Hotel from './Hotel'
+import styled from 'styled-components';
 
+const Home =styled.div`
+    text-align: center;
+    max-width: 1300px;
+    margin-right: auto;
+    margin-left: auto;
+`
+const Header=styled.div`
+    padding: 100px 100px 10px 100px;
+    h1 {
+      font-size: 25px;
+    }
+`
+const Subheader=styled.div`
+    font-weight: 300px;
+    font-size: 26px;
+`
+const Grid=styled.div`
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+    width: 100%;
+    padding: 20px;
+`
 
 const Hotels = () => {
   const [hotels, setHotels] = useState([])
@@ -24,19 +48,17 @@ const Hotels = () => {
     />
     )
   })
-
-
   return (
-    <div className="text-center max-w-screen-xl	mx-auto">
-      <div className="p-28 text-2xl">
-        <h1 className='text-6xl'>ONEST</h1>
-        <h4>Honest, unbiased hotel reviews. Share your experience.</h4>
-      </div>
-      <div className="grid gap-4 grid-cols-4 grid-rows-3 wx-0 px-0">
+    <Home>
+      <Header>
+        <h1>ONEST</h1>
+        <Subheader>Honest , unbiased hotel reviews</Subheader>
+      </Header>
+      <Grid>
         {grid}
-      </div>
-    </div>
+      </Grid>
+    </Home>
   )
 }
 
-export default Hotels 
+export default Hotels
