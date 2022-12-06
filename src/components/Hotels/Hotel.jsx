@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
-import Rating from '../Rating/Rating'
 
 const Card = styled.div`
   border: 1px solid #efefef;
@@ -24,7 +23,7 @@ const AirlineName = styled.div`
 
 const LinkWrapper = styled.div`
   margin: 30px 0 20px 0;
-  height:50px;
+  height:40px;
   a {
     color: #fff;
     background-color: #71b406;
@@ -57,7 +56,6 @@ const Airline = ({ name, image_url, average_score, slug, ...props }) => {
       <AirlineName>
         {name}
       </AirlineName>
-      <Rating score={average_score} />
       <LinkWrapper>
         <Link to={"/hotels/" + slug}>View Airline</Link>
       </LinkWrapper>

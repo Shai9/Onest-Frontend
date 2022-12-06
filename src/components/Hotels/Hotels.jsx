@@ -1,62 +1,57 @@
-import {React, useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Hotel from './Hotel'
-import styled from 'styled-components';
+import Header from './Header'
 
-const Home =styled.div`
-    text-align: center;
-    max-width: 1300px;
-    margin-right: auto;
-    margin-left: auto;
+import styled from 'styled-components'
+
+const Home = styled.div`
+  text-align:center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
 `
-const Header=styled.div`
-    padding: 100px 100px 10px 100px;
-    h1 {
-      font-size: 25px;
-    }
-`
-const Subheader=styled.div`
-    font-weight: 300px;
-    font-size: 26px;
-`
-const Grid=styled.div`
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 20px;
-    width: 100%;
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  width: 100%;
+  padding: 20px;
+  > div {
+    background-color: #fff;
+    border-radius: 5px;
     padding: 20px;
+  }
 `
 
-const Hotels = () => {
-  const [hotels, setHotels] = useState([])
+const Hotels= () => {
+  const [hotels,setHotels] = useState([]);
 
-  useEffect (()=> {
-      //get all hotels from the api
-      //update all hotels in state
+  useEffect(() => {
     axios.get('/api/v1/hotels.json')
-    .then( resp => {
-      setHotels(resp.data.data)
-    })
-    .catch( resp => console.log(resp))
-  }, [hotels.length])
+    .then( resp => setHotels(resp.data.data))
+    .catch( data => console.log('error', data))
+  }, [])
 
-  const grid = hotels.map(item => {
+  const grid = hotels.map( (hotel, index) => {
+    const { name, image_url, slug, average_score } = hotel.attributes
+
     return (
-    <Hotel
-        key={item.attributes.name}
-        attributes={item.attributes}
-    />
+      <Hotel 
+        key={index}
+        name={name}
+        image_url={image_url}
+        slug={slug}
+        average_score={average_score}
+      />
     )
   })
+
   return (
     <Home>
-      <Header>
-        <h1>ONEST</h1>
-        <Subheader>Honest , unbiased hotel reviews</Subheader>
-      </Header>
-      <Grid>
-        {grid}
-      </Grid>
+      <Header/>
+      <Grid>{grid}</Grid>
     </Home>
   )
 }
