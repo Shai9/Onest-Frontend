@@ -57,7 +57,7 @@ const Airline = ({ name, image_url, average_score, slug, ...props }) => {
         {name}
       </AirlineName>
       <LinkWrapper>
-        <Link to={"/hotels/" + slug}>View Airline</Link>
+        <Link to={"/hotels/" + slug}>View Hotel</Link>
       </LinkWrapper>
     </Card>
   )

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Hotel from './Hotel'
 import Header from './Header'
+import { Footer } from './Footer'
 
 import styled from 'styled-components'
 
@@ -14,6 +15,8 @@ const Home = styled.div`
 
 const Grid = styled.div`
   display: grid;
+  margin-left: auto;
+  margin-right: auto;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
   width: 100%;
@@ -52,6 +55,7 @@ const Hotels= () => {
     <Home>
       <Header/>
       <Grid>{grid}</Grid>
+      <Footer />
     </Home>
   )
 }
